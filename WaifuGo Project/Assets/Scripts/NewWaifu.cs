@@ -21,8 +21,12 @@ public class NewWaifu : MonoBehaviour
         {
             Vector3 position = new Vector3(Random.Range(-0.215f, 0.474f), 0.1599348f, Random.Range(-0.464f, 0.615f));
             m_Waifu[i] = Instantiate(m_RefWaifu, position, Quaternion.identity).GetComponent<SpriteNew>();
-            m_Waifu[i].gameObject.SetActive(true);
+
+            int Chance = Random.Range(0, s_Waifu.Length);
+            m_Waifu[i].WaifuSpriteRenderer.sprite = s_Waifu[Chance];
+
             m_Waifu[i].transform.SetParent(m_RefWaifu.transform);
+            m_Waifu[i].gameObject.SetActive(true);
         }
     }
 
@@ -32,6 +36,7 @@ public class NewWaifu : MonoBehaviour
         {
             int Chance = Random.Range(0, s_Waifu.Length);
               _s.WaifuSpriteRenderer.sprite = s_Waifu[Chance];
+            _s.t_Body.Translate(Random.Range(-0.215f, 0.474f), 0.1599348f, Random.Range(-0.464f, 0.615f));
 
         }
     }
