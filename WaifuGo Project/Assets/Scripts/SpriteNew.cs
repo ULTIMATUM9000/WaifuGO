@@ -7,8 +7,6 @@ public class SpriteNew : MonoBehaviour
     SpriteRenderer m_SpriteRenderer;
     Transform m_Transform;
 
-
-
     public SpriteRenderer WaifuSpriteRenderer
     {
         get { return m_SpriteRenderer; }
