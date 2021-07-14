@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 968827a194ddcb94981ea1246c2633b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TOTAL_WAIFU: 2
   m_RefWaifu: {fileID: 9200628474814029513, guid: f1eab787df32ce44f9c1175374b4b170, type: 3}
   groundPlane: {fileID: 1277155392}
 --- !u!4 &304174990
@@ -408,19 +409,7 @@ MonoBehaviour:
   StatusFilter: 1
   OnTargetFound:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 304174989}
-        m_TargetAssemblyTypeName: NewWaifu, Assembly-CSharp
-        m_MethodName: ShuffleLocation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnTargetLost:
     m_PersistentCalls:
       m_Calls: []
