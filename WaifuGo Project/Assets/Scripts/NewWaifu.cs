@@ -20,7 +20,7 @@ public class NewWaifu : MonoBehaviour
         ShuffleLocation();
     }
 
-    void ShuffleLocation()
+    public void ShuffleLocation()
 	{
         for (int i = 0; i < TOTAL_WAIFU; i++)
         {
