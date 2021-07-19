@@ -21,8 +21,6 @@ public class WaifuClick : MonoBehaviour
 				
 			if(Physics.Raycast(ray, out hit, 100.0f))
 			{
-				PrintName(hit.transform.gameObject);
-
 				if (hit.collider.CompareTag("Waifu"))
 				{
 					hit.transform.gameObject.GetComponent<SpriteNew>().AddWaifu();
@@ -36,30 +34,17 @@ public class WaifuClick : MonoBehaviour
 		if (Input.touchCount > 0)
 		{
 			touch = Input.GetTouch(0);
-			//Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+			Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
 
 			if (touch.phase == TouchPhase.Began)
 			{
-				//Collider touchedCollider = Physics.OverlapBox(touchPosition, 0f,Quaternion.identity);
+				Collider2D touchedCollider = Physics2D.OverlapPoint(touchPosition);
 
-				//if (col = touchedCollider)
-				//{
-					
-				//}
-			}
-			if (touch.phase == TouchPhase.Moved)
-			{
-
-			}
-			if (touch.phase == TouchPhase.Ended)
-			{
-
+				if (touchedCollider.CompareTag("Waifu"))
+				{
+					touchedCollider.GetComponent<SpriteNew>().AddWaifu();
+				}
 			}
 		}
-	}
-
-	void PrintName(GameObject go)
-	{
-		print(go.name);
 	}
 }
