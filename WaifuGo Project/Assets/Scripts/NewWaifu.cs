@@ -8,11 +8,15 @@ public class NewWaifu : MonoBehaviour
     SpriteNew[] m_Waifu;
     [SerializeField] int TOTAL_WAIFU = 2;
     [SerializeField] GameObject m_RefWaifu; //Prefab
-    [SerializeField] GameObject groundPlane;
+	[SerializeField] GameObject groundPlane;
+
+    [SerializeField] Vector3 size;
 
 
 
-    private void Awake()
+
+
+	private void Awake()
     {
         //m_RefWaifu = GameObject.Find("Waifu");
         m_Waifu = new SpriteNew[TOTAL_WAIFU];
@@ -25,7 +29,7 @@ public class NewWaifu : MonoBehaviour
 	{
         for (int i = 0; i < TOTAL_WAIFU; i++)
         {
-            Vector3 position = new Vector3(Random.Range(groundPlane.transform.position.x - 0.215f, groundPlane.transform.position.x + 0.215f), 0.1599348f, Random.Range(groundPlane.transform.position.y - 0.215f, groundPlane.transform.position.y + 0.215f));
+            Vector3 position = new Vector3(Random.Range(-size.x / 2, size.x /2), size.y, Random.Range(-size.z /2, size.z /2));
 
             m_Waifu[i] = Instantiate(m_RefWaifu, position, Quaternion.identity).GetComponent<SpriteNew>();
 
@@ -50,7 +54,13 @@ public class NewWaifu : MonoBehaviour
         for(int i = 0; i < m_Waifu.Length; i++)
 		{
             m_Waifu[i].gameObject.SetActive(true);
-            m_Waifu[i].transform.position = new Vector3(Random.Range(groundPlane.transform.position.x - 0.215f, groundPlane.transform.position.x + 0.215f), 0.1599348f, Random.Range(groundPlane.transform.position.y - 0.215f, groundPlane.transform.position.y + 0.215f));
+            m_Waifu[i].transform.position = new Vector3(Random.Range(-size.x / 2,size.x / 2),groundPlane.transform.position.y + size.y, Random.Range(-size.z / 2,size.z /2));
 		}
     }
+
+	private void OnDrawGizmosSelected()
+	{
+        Gizmos.color = Color.green;
+        Gizmos.DrawCube(transform.position, size);
+	}
 }
