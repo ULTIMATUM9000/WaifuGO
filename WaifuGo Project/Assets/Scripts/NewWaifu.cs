@@ -11,11 +11,6 @@ public class NewWaifu : MonoBehaviour
 	[SerializeField] GameObject groundPlane;
 
     [SerializeField] Vector3 size;
-
-
-
-
-
 	private void Awake()
     {
         //m_RefWaifu = GameObject.Find("Waifu");
