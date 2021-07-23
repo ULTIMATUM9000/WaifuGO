@@ -16,9 +16,10 @@ public class WaifuClick : MonoBehaviour
 	{
 		if(Input.GetMouseButtonDown(0))
 		{
+			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 				
-			if(Physics.Raycast(ray, out RaycastHit hit))
+			if(Physics.Raycast(ray, out hit, 100.0f))
 			{
 				if (hit.collider.CompareTag("Waifu"))
 				{
@@ -33,16 +34,15 @@ public class WaifuClick : MonoBehaviour
 		if (Input.touchCount > 0)
 		{
 			touch = Input.GetTouch(0);
+			Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
 
 			if (touch.phase == TouchPhase.Began)
 			{
-				Ray ray = Camera.main.ScreenPointToRay(touch.position);
+				Collider2D touchedCollider = Physics2D.OverlapPoint(touchPosition);
 
-				if (Physics.Raycast(ray, out RaycastHit hit))
+				if (touchedCollider.CompareTag("Waifu"))
 				{
-					if (hit.collider.CompareTag("Waifu"))
-
-						hit.transform.gameObject.GetComponent<SpriteNew>().AddWaifu();
+					touchedCollider.GetComponent<SpriteNew>().AddWaifu();
 				}
 			}
 		}
