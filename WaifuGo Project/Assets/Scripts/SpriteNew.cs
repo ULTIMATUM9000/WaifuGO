@@ -6,6 +6,8 @@ public class SpriteNew : MonoBehaviour
 {
     SpriteRenderer m_SpriteRenderer;
 
+    public int waifuIndex;
+
     public SpriteRenderer WaifuSpriteRenderer
     {
         get { return m_SpriteRenderer; }
@@ -19,6 +21,7 @@ public class SpriteNew : MonoBehaviour
 
     public void AddWaifu()
 	{
+        CollectionManager.instance.UnlockWaifuPanel(waifuIndex);
         GameManager.instance.waifusCollected++;
         gameObject.SetActive(false);
 	}
